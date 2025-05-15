@@ -9,15 +9,16 @@ using API.Data;
 using API.Models;
 using API.DTOs.Users;
 using API.Mappers;
-using API.Repositories.UserRepo;
 using API.Services;
 using API.DTOs;
 using API.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
     [Route("api/users")]
     [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
 
@@ -29,6 +30,7 @@ namespace API.Controllers
         }
 
         // GET: api/Users
+        [Authorize(policy: "Get_Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserGlobalReponse>>> GetUsers()
         {
@@ -36,6 +38,7 @@ namespace API.Controllers
         }
 
         // GET: api/Users/5
+        [Authorize(policy: "Get_Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<UserGlobalReponse>> GetUser(string id)
         {
@@ -43,6 +46,7 @@ namespace API.Controllers
         }
 
         // PUT: api/Users/5
+        [Authorize(policy: "Update")]
         [HttpPut("{id}")]
         public async Task<ActionResult<UserGlobalReponse>> UpdateUser(string id, UserUpdationRequest request)
         {
@@ -51,6 +55,7 @@ namespace API.Controllers
 
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(policy: "Create")]
         [HttpPost]
         public async Task<ActionResult<APIresponse<UserGlobalReponse>>> CreateUser([FromBody] UserCreationRequest request)
         {
@@ -58,6 +63,7 @@ namespace API.Controllers
         }
 
         // DELETE: api/Users/5
+        [Authorize(policy: "Delete")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<APIresponse<string>>> DeleteUser(string id)
         {

@@ -1,5 +1,6 @@
 ﻿using API.DTOs.Users;
 using API.DTOs;
+using API.Models;
 
 namespace API.Interfaces
 {
@@ -14,5 +15,6 @@ namespace API.Interfaces
         public Task<APIresponse<List<UserGlobalReponse>>> GetAllUsers();
 
         public Task<APIresponse<string>> DeleteById(string id);
+
     }
 }

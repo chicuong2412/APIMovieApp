@@ -40,31 +40,31 @@ namespace API.Mappers
         {
             if (request != null)
             {
-                if (request.Address != null)
+                if (!string.IsNullOrWhiteSpace(request.Address))
                 {
                     user.Address = request.Address;
                 }
-                if (request.Age != null)
+                if (request.Age.HasValue)
                 {
-                    user.Age = request.Age;
+                    user.Age = request.Age.Value;
                 }
-                if (request.Email != null)
+                if (!string.IsNullOrWhiteSpace(request.Email))
                 {
                     user.Email = request.Email;
                 }
-                if (request.Name != null)
+                if (!string.IsNullOrWhiteSpace(request.Name))
                 {
                     user.Name = request.Name;
                 }
-                if (request.PhoneNumber != null)
+                if (!string.IsNullOrWhiteSpace(request.PhoneNumber))
                 {
                     user.PhoneNumber = request.PhoneNumber;
                 }
-                if (request.DoB != null)
+                if (request.DoB.HasValue)
                 {
-                    user.DoB = request.DoB;
+                    user.DoB = request.DoB.Value;
                 }
-                if (request.Username != null)
+                if (!string.IsNullOrWhiteSpace(request.Username))
                 {
                     user.UserName = request.Username;
                 }
