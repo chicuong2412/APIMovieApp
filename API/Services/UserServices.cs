@@ -4,7 +4,7 @@ using API.DTOs.Users;
 using API.Interfaces;
 using API.Mappers;
 using API.Models;
-using API.Repositories.UserRepo;
+using API.Repositories;
 using API.ReturnCodes.SuccessCodes;
 
 namespace API.Services

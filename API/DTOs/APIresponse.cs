@@ -14,11 +14,6 @@ namespace API.DTOs
             this.message = code.Message;
         }
 
-        public APIresponse()
-        {
-            
-        }
-
-        public T data { get; set; }
+        public T? data { get; set; }
     }
 }

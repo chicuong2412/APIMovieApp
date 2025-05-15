@@ -1,4 +1,5 @@
-﻿using API.DTOs.Users;
+﻿using API.DTOs.Authentication;
+using API.DTOs.Users;
 using API.Models;
 
 namespace API.Interfaces
@@ -14,5 +15,10 @@ namespace API.Interfaces
         public Task<User> PutUser(string id, UserUpdationRequest request);
 
         public Task<User> CreateUser(UserCreationRequest request);
+
+        Task<User> RegisterUserGlobal(RegisterRequest request);
+
+        Task<User?> getByEmail(string email);
+
     }
 }
