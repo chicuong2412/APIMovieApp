@@ -1,4 +1,5 @@
-﻿using API.DTOs;
+﻿using System.ComponentModel.DataAnnotations;
+using API.DTOs;
 using API.DTOs.Authentication;
 using API.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -85,9 +86,13 @@ namespace API.Controllers
 
         [AllowAnonymous]
         [HttpPut("change-password/{email}")]
-        public async Task<ActionResult<APIresponse<string>>> ChangePassword(string email, [FromBody] string newPassword)
+        public async Task<ActionResult<APIresponse<string>>> ChangePassword(string email, ChangePassRequest changePassRequest)
         {
-            return await _authenticationServices.ChangePassword(email, newPassword);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            return await _authenticationServices.ChangePassword(email, changePassRequest.NewPassword, changePassRequest.Token);
         }
 
 

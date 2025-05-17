@@ -188,13 +188,6 @@
         "parameters": [
           {
             "name": "email",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "email",
             "in": "path",
             "required": true,
             "schema": {
@@ -232,13 +225,6 @@
           "Authenticate"
         ],
         "parameters": [
-          {
-            "name": "email",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "email",
             "in": "path",
@@ -299,13 +285,6 @@
         "parameters": [
           {
             "name": "email",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "email",
             "in": "path",
             "required": true,
             "schema": {
@@ -317,17 +296,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/ChangePassRequest"
               }
             },
             "text/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/ChangePassRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/ChangePassRequest"
               }
             }
           }
@@ -810,6 +789,35 @@
               "type": "boolean"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieGeneralInformationReponseIEnumerableAPIresponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieGeneralInformationReponseIEnumerableAPIresponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieGeneralInformationReponseIEnumerableAPIresponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/movies/getRandom": {
+      "get": {
+        "tags": [
+          "Movies"
         ],
         "responses": {
           "200": {
@@ -1740,6 +1748,24 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChangePassRequest": {
+        "required": [
+          "newPassword",
+          "token"
+        ],
+        "type": "object",
+        "properties": {
+          "newPassword": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "token": {
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false

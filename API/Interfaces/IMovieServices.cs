@@ -13,7 +13,7 @@ namespace API.Interfaces
         Task<APIresponse<MovieGeneralInformationReponse>> GetMovieGeneralInformationById(int id);
         Task<APIresponse<List<MovieGeneralInformationReponse>>> GetTop20ReleasedMovies();
 
-        Task<APIresponse<MovieGeneralInformationReponse>> Get9RandomMovies();
+        Task<APIresponse<IEnumerable<MovieGeneralInformationReponse>>> Get9RandomMovies();
 
     }
 }

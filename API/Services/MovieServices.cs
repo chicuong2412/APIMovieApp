@@ -74,10 +74,10 @@ namespace API.Services
             return response;
         }
 
-        public async Task<APIresponse<MovieGeneralInformationReponse>> Get9RandomMovies()
+        public async Task<APIresponse<IEnumerable<MovieGeneralInformationReponse>>> Get9RandomMovies()
         {
             var movies = await _movieRepository.GetRadMoviesAsync(9);
-            var response = new APIresponse<List<MovieGeneralInformationReponse>>(SuccessCodes.Success);
+            var response = new APIresponse<IEnumerable<MovieGeneralInformationReponse>>(SuccessCodes.Success);
             var movieList = movies.Select(m => m.MapToMovieGeneralResponse()).ToList();
             response.data = movieList;
             return response;
