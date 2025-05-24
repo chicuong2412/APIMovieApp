@@ -1,4 +1,5 @@
-﻿using API.Models;
+﻿using System.Security;
+using API.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,6 +38,8 @@ namespace API.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+
 
             modelBuilder.Entity<Movie>()
                 .HasMany(m => m.Seasons)

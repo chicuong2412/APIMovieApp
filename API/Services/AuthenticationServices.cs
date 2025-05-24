@@ -214,13 +214,17 @@ namespace API.Services
 
             resetCode.IsOpenToChange = true;
             resetCode.ExpiredChangePasswor = DateTime.UtcNow.AddMinutes(15);
+            resetCode.Token = Guid.NewGuid().ToString();
 
             await _passwordResetCodeRepository.SaveChangesAsync();
 
-            return new APIresponse<string>(SuccessCodes.Success);
+            return new APIresponse<string>(SuccessCodes.Success)
+            {
+                data = resetCode.Token
+            };
         }
 
-        public async Task<APIresponse<string>> ChangePassword(string email, string newPassword)
+        public async Task<APIresponse<string>> ChangePassword(string email, string newPassword, string token)
         {
             var user = await _userRepository.getByEmail(email);
 
@@ -234,7 +238,7 @@ namespace API.Services
             }
 
             if (resetCode.IsOpenToChange && resetCode.ExpiredChangePasswor is not null 
-                && resetCode.ExpiredChangePasswor > DateTime.UtcNow)
+                && resetCode.ExpiredChangePasswor > DateTime.UtcNow && token == resetCode.Token)
             {
                 if (!IsPasswordStrongEnough(newPassword))
                 {
@@ -251,12 +255,18 @@ namespace API.Services
 
 
                 await _passwordResetCodeRepository.SaveChangesAsync();
+            } else
+            {
+                return new APIresponse<string>(ErrorCodes.NotFound)
+                {
+                    data = "Change Password unsuccessfully!!!"
+                };
             }
 
-            return new APIresponse<string>(SuccessCodes.Success)
-            {
-                data = "Change Password Successfully!!!"
-            };
+                return new APIresponse<string>(SuccessCodes.Success)
+                {
+                    data = "Change Password Successfully!!!"
+                };
 
         }
 

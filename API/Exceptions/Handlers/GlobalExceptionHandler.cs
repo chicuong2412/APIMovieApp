@@ -14,11 +14,6 @@ namespace API.Exceptions.Handlers
         public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, System.Exception exception, CancellationToken cancellationToken)
         {
 
-            //_logger.LogError(
-            //    exception,
-            //    "Exception occurred: {Message}",
-            //    exception.Message);
-
             var problemDetails = new ProblemDetails
             {
                 Status = StatusCodes.Status404NotFound,

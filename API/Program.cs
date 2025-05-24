@@ -44,11 +44,12 @@ builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<ExpiredJWTRepository>();
 builder.Services.AddHostedService<CleanRefreshTokenService>();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<IAuthorizationHandler, PermissionHandler>();
+
 builder.Services.AddScoped<PasswordResetCodeRepository>();
 
 builder.Services.AddExceptionHandler<AppExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, PermissionHandler>();
 
 
 builder.Services.AddTransient<EmailSender>();
@@ -166,6 +167,7 @@ builder.Services.AddAuthorization(
 
 var app = builder.Build();
 
+app.UseCors("AllowAll");
 
 app.UseAuthentication();
 app.UseAuthorization();

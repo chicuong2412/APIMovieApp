@@ -1,4 +1,6 @@
 ﻿using API.Authorization.Requirements;
+using API.DTOs;
+using API.ENUMS.ErrorCodes;
 using API.Repositories;
 using Microsoft.AspNetCore.Authorization;
 
@@ -32,5 +34,11 @@ namespace API.Authorization.Handler
             }
             return;
         }
+    }
+
+    public class MyAuthFailureInfo
+    {
+        public string Reason { get; set; }
+        public int ErrorCode { get; set; }
     }
 }
