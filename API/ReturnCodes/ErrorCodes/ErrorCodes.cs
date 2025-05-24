@@ -15,6 +15,8 @@
         public static readonly ReturnCode DataConflict = new(400, "Some of the data conflict with others.");
         public static readonly ReturnCode NoSeasons = new(400, "This movie doesn't have any seaons!!!");
 
+        public static readonly ReturnCode TokenLoggedOut = new(499, "This token is not logged out!!!");
+
         //// Custom Movie API Errors
         //public static readonly ReturnCode MovieNotFound = new(404, "The requested movie does not exist.");
         //public static readonly ReturnCode SeasonNotFound = new(404, "The requested season was not found.");
