@@ -45,24 +45,31 @@ namespace API.Controllers
 
         [Authorize]
         [HttpPost("logout")]
-        public async Task<IActionResult> Logout([FromBody] string requestToken)
+        public async Task<IActionResult> Logout([FromBody] RefreshTokenRequest refreshToken)
         {
-            if (string.IsNullOrEmpty(requestToken))
+            Console.WriteLine("Logout");
+            if (string.IsNullOrEmpty(refreshToken.RequestToken))
             {
                 return BadRequest("Invalid token");
             }
             var jwt = Request.Headers["Authorization"].ToString().Substring("Bearer ".Length).Trim();
-            await _authenticationServices.Logout(requestToken, jwt);
+            await _authenticationServices.Logout(refreshToken.RequestToken, jwt);
             return NoContent();
         }
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpPost("refresh-token")]
-        public async Task<ActionResult<AuthenticationResponse>> RefreshToken([FromBody] string requestToken)
-        {
-            var response = await _authenticationServices.ValidateRefreshToken(requestToken);
+        public async Task<ActionResult<AuthenticationResponse>> RefreshToken([FromBody] RefreshTokenRequest refreshToken)
+        {   
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Input the refresh token, please");
+            }
+
+            var response = await _authenticationServices.ValidateRefreshToken(refreshToken.RequestToken);
             if (response is null)
             {
+                Console.WriteLine("Null");
                 return BadRequest("Invalid refresh token");
             }
             return Ok(response);
@@ -78,21 +85,26 @@ namespace API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("validate-code/{email}")]
-        public async Task<ActionResult<APIresponse<string>>> ValidateCode(string email, [FromBody] string code)
-        {
-            return await _authenticationServices.ValidateResetCode(email, code);
-        }
-
-        [AllowAnonymous]
-        [HttpPut("change-password/{email}")]
-        public async Task<ActionResult<APIresponse<string>>> ChangePassword(string email, ChangePassRequest changePassRequest)
+        [HttpPost("validate-code/{token}")]
+        public async Task<ActionResult<APIresponse<string>>> ValidateCode(string token, [FromBody] CodeForgot code)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            return await _authenticationServices.ChangePassword(email, changePassRequest.NewPassword, changePassRequest.Token);
+
+            return Ok(await _authenticationServices.ValidateResetCode(token, code.Code));
+        }
+
+        [AllowAnonymous]
+        [HttpPut("change-password")]
+        public async Task<ActionResult<APIresponse<string>>> ChangePassword(ChangePassRequest changePassRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            return Ok(await _authenticationServices.ChangePassword(changePassRequest.NewPassword, changePassRequest.Token));
         }
 
 

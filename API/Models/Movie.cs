@@ -19,6 +19,7 @@ namespace API.Models
         public List<Genere> Generes { get; set; } = new List<Genere>();
         public List<Country> Countries { get; set; } = new List<Country>();
         public List<ProductionCompany> ProductionCompanies { get; set; } = new List<ProductionCompany>();
+        //public ICollection<User> Users { get; set; } = new List<User>();
         public String? path { get; set; }
 
         public ICollection<Season> Seasons { get; set; } = new List<Season>();

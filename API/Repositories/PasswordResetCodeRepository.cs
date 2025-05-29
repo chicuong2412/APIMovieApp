@@ -27,6 +27,7 @@ namespace API.Repositories
                 {
                     ExpiredDate = DateTime.UtcNow.AddMinutes(5),
                     Code = _random.Next(1000, 10000).ToString(),
+                    Token = Guid.NewGuid().ToString(),
                 };
 
                 _context.Entry<User>(user).Entity.PasswordResetCode = preCode;
@@ -39,6 +40,8 @@ namespace API.Repositories
 
                 preCode.ExpiredDate = DateTime.UtcNow.AddMinutes(5);
 
+                preCode.Token = Guid.NewGuid().ToString();
+
                 _context.Entry<PasswordResetCode>(preCode).State = EntityState.Modified;
             }
 
@@ -50,6 +53,11 @@ namespace API.Repositories
         public async Task<PasswordResetCode?> GetPasswordResetAsync(string UserId)
         {
             return await _context.PasswordResetCodes.FirstOrDefaultAsync(p => p.UserId == UserId);
+        }
+
+        public async Task<PasswordResetCode?> GetPasswordResetByTokenAysnc(string token)
+        {
+            return await _context.PasswordResetCodes.FirstOrDefaultAsync(p => p.Token == token);
         }
 
 

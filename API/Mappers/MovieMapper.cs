@@ -33,6 +33,7 @@ namespace API.Mappers
                 PosterPath = movie.PosterPath,
                 VoteCount = movie.VoteCount,
                 path = movie.path,
+                HasSeason = movie.HasSeason
             };
         }
 

@@ -24,6 +24,8 @@ namespace API.Models
 
         public ICollection<Role> Roles { get; set; } = new List<Role>();
 
+        //public ICollection<Movie> FavoriteMovies { get; set; } = new List<Movie>();
+
 
         public PasswordResetCode PasswordResetCode { get; set; }
 

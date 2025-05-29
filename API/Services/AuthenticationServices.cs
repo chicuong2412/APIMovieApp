@@ -171,40 +171,35 @@ namespace API.Services
 
             if (preCode is not null && Math.Abs(preCode.ExpiredDate.Subtract(DateTime.UtcNow.AddMinutes(5)).TotalMinutes) <= 2)
             {
-                reponse = new APIresponse<string>(ErrorCodes.RequestSpam);
-                reponse.message = "Please wait 1 minutes to get the code!!!";
-
-                return reponse;
+                throw new AppException(ErrorCodes.RequestSpam);
             }
 
             var passwordResetCode = await _passwordResetCodeRepository.Create(user);
+
 
             await SendEmailPassCode(passwordResetCode, email);
 
             reponse.message = "Please check email (spam folder) to get the code!!!";
 
+            reponse.data = passwordResetCode.Token;
+
             return reponse;
         }
 
-        public async Task<APIresponse<string>> ValidateResetCode(string email, string code)
+        public async Task<APIresponse<string>> ValidateResetCode(string token, string code)
         {
-            var user = await _userRepository.getByEmail(email);
 
-            if (user is null)
+            var resetCode = await _passwordResetCodeRepository.GetPasswordResetByTokenAysnc(token);
+            Console.WriteLine(code);
+
+            if (resetCode is null)
             {
                 throw new AppException(ErrorCodes.NotFound);
             }
 
-            var resetCode = await _passwordResetCodeRepository.GetPasswordResetAsync(user.Id);
-
-            if (resetCode is null)
-            {
-                return new APIresponse<string>(ErrorCodes.DataInvalid);
-            }
-
             if (resetCode.ExpiredDate < DateTime.UtcNow)
             {
-                return new APIresponse<string>(ErrorCodes.Expired);
+                throw new AppException(ErrorCodes.Expired);
             }
 
             if (resetCode.Code != code)
@@ -214,7 +209,7 @@ namespace API.Services
 
             resetCode.IsOpenToChange = true;
             resetCode.ExpiredChangePasswor = DateTime.UtcNow.AddMinutes(15);
-            resetCode.Token = Guid.NewGuid().ToString();
+
 
             await _passwordResetCodeRepository.SaveChangesAsync();
 
@@ -224,27 +219,32 @@ namespace API.Services
             };
         }
 
-        public async Task<APIresponse<string>> ChangePassword(string email, string newPassword, string token)
+        public async Task<APIresponse<string>> ChangePassword(string newPassword, string token)
         {
-            var user = await _userRepository.getByEmail(email);
 
-            if (user is null) { throw new AppException(ErrorCodes.NotFound);}
-
-            var resetCode = await _passwordResetCodeRepository.GetPasswordResetAsync(user.Id);
+            var resetCode = await _passwordResetCodeRepository.GetPasswordResetByTokenAysnc(token);
 
             if (resetCode is null)
             {
                 throw new AppException(ErrorCodes.NotFound);
             }
-
-            if (resetCode.IsOpenToChange && resetCode.ExpiredChangePasswor is not null 
-                && resetCode.ExpiredChangePasswor > DateTime.UtcNow && token == resetCode.Token)
+            Console.WriteLine(resetCode.Code);
+            var user = await _userRepository.getById(resetCode.UserId);
+            Console.WriteLine(user);
+            if (user is null)
             {
+                throw new AppException(ErrorCodes.ServerError);
+            }
+
+            if (resetCode.IsOpenToChange && resetCode.ExpiredChangePasswor is not null
+                && resetCode.ExpiredChangePasswor > DateTime.UtcNow)
+            {
+                Console.WriteLine("In");
                 if (!IsPasswordStrongEnough(newPassword))
                 {
                     return new APIresponse<string>(ErrorCodes.DataInvalid);
                 }
-                
+
                 var passwordHasher = new PasswordHasher<User>();
 
                 var hashed = passwordHasher.HashPassword(null, newPassword);
@@ -255,7 +255,8 @@ namespace API.Services
 
 
                 await _passwordResetCodeRepository.SaveChangesAsync();
-            } else
+            }
+            else
             {
                 return new APIresponse<string>(ErrorCodes.NotFound)
                 {
@@ -263,10 +264,10 @@ namespace API.Services
                 };
             }
 
-                return new APIresponse<string>(SuccessCodes.Success)
-                {
-                    data = "Change Password Successfully!!!"
-                };
+            return new APIresponse<string>(SuccessCodes.Success)
+            {
+                data = "Change Password Successfully!!!"
+            };
 
         }
 

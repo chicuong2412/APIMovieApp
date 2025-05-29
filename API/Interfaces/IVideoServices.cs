@@ -7,6 +7,7 @@ namespace API.Interfaces
     public interface IVideoServices
     {
         Task<FileStream> GetVideoStream(string code);
+        (string filePath, string contentType) GetVideoHLS(string code, string fileName);
         Task<APIresponse<Video>> UpdateVideo(int id, VideoUpdationRequest request);
         Task<APIresponse<Video>> AddVideo(VideoCreationRequest request);
         Task<APIresponse<IEnumerable<Video>>> GetAllVideos();

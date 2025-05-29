@@ -5,6 +5,7 @@ using API.Exceptions;
 using API.Interfaces;
 using API.Models;
 using API.ReturnCodes.SuccessCodes;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Services
 {
@@ -24,6 +25,19 @@ namespace API.Services
             var videoPath = Path.Combine("Videos", video.Url);
             var stream = new FileStream(videoPath, FileMode.Open, FileAccess.Read);
             return stream;
+        }
+
+        public (string filePath, string contentType) GetVideoHLS(string code, string fileName)
+        {
+            var videoPath = Path.Combine("D:\\Second\\videos\\" + code + "\\", fileName);
+            if (File.Exists(videoPath) == false)
+            {
+                throw new AppException(ErrorCodes.NotFound);
+            }
+            var contentType = fileName.EndsWith(".m3u8")
+                        ? "application/vnd.apple.mpegurl"
+                        : "video/MP2T";
+            return (videoPath, contentType);
         }
 
         public async Task<APIresponse<Video>> GetVideoById(int id)
