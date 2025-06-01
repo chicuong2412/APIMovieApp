@@ -19,8 +19,32 @@ namespace API.Mappers
                 VoteCount = request.VoteCount,
                 Status = request.Status,
                 HasSeason = request.HasSeason,
+                
             };
         }
+           
+        public static MovieDetailInformation MoveToDetail(this Movie movie)
+        {
+            return new MovieDetailInformation
+            {
+                Id = movie.Id,
+                Title = movie.Title,
+                Overview = movie.Overview,
+                ReleaseDate = movie.ReleaseDate,
+                BackdropPath = movie.BackdropPath,
+                PosterPath = movie.PosterPath,
+                VoteCount = movie.VoteCount,
+                HasSeason = movie.HasSeason,
+                Generes = movie.Generes,
+                path = movie.path,
+                ProductionCompanies = movie.ProductionCompanies,
+                Revenue = movie.Revenue,
+                Budget = movie.Budget,
+                Status = movie.Status,
+                Runtime = movie.Runtime,
+            };
+        }
+
         public static MovieGeneralInformationReponse MapToMovieGeneralResponse(this Movie movie)
         {
             return new MovieGeneralInformationReponse
@@ -32,8 +56,8 @@ namespace API.Mappers
                 BackdropPath = movie.BackdropPath,
                 PosterPath = movie.PosterPath,
                 VoteCount = movie.VoteCount,
-                path = movie.path,
-                HasSeason = movie.HasSeason
+                HasSeason = movie.HasSeason,
+                Generes = movie.Generes,
             };
         }
 

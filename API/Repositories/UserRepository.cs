@@ -8,6 +8,7 @@ using API.Mappers;
 using API.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace API.Repositories
 {
@@ -33,6 +34,85 @@ namespace API.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task AddMovieFavorite(string userId, int movieId)
+        {
+            var user = await _context.Users
+                .Include(user => user.FavoriteMovies)
+                .FirstOrDefaultAsync(user => user.Id == userId);
+            if (user == null)
+            {
+                throw new AppException(ErrorCodes.NotFound);
+            }
+            var movie = await _context.Movies.FindAsync(movieId);
+            if (movie == null)
+            {
+                return;
+            }
+            if (!user.FavoriteMovies.Contains(movie))
+            {
+                user.FavoriteMovies.Add(movie);
+                await SaveChangesAsync();
+            }
+        }
+
+        public async Task RemoveMovieFavorite(string userId, int movieId)
+        {
+            var user = await _context.Users
+                .Include(user => user.FavoriteMovies)
+                .FirstOrDefaultAsync(user => user.Id == userId);
+            if (user == null)
+            {
+                throw new AppException(ErrorCodes.NotFound);
+            }
+            var movie = await _context.Movies.FindAsync(movieId);
+            if (movie == null)
+            {
+                return;
+            }
+            if (user.FavoriteMovies.Contains(movie))
+            {
+                user.FavoriteMovies.Remove(movie);
+                await SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<Movie>> GetFavoriteMovies(string userId)
+        {
+            var user = await _context.Users
+                .Include(user => user.FavoriteMovies)
+                    .ThenInclude(movie => movie.Generes)
+                .FirstOrDefaultAsync(user => user.Id == userId);
+            if (user == null)
+            {
+                throw new AppException(ErrorCodes.NotFound);
+            }
+            return user.FavoriteMovies.ToList();
+        }
+
+        public async Task<bool> IsMovieFavorite(string userId, int movieId)
+        {
+            var user = await _context.Users
+                .Include(user => user.FavoriteMovies)
+                .FirstOrDefaultAsync(user => user.Id == userId);
+            if (user == null)
+            {
+                throw new AppException(ErrorCodes.NotFound);
+            }
+
+            return user.FavoriteMovies.Any(movie => movie.Id == movieId);
+        }
+
+        public async Task UpdateUserScreenTime(string userId, decimal screenTime)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+            {
+                throw new AppException(ErrorCodes.NotFound);
+            }
+            user.ScreenTime += screenTime;
+            await SaveChangesAsync();
+        }
+
         public async Task<List<User>> findAll()
         {
             return await _context.Users.ToListAsync();
@@ -50,7 +130,10 @@ namespace API.Repositories
 
         public async Task<User> getById(string id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users
+            .Include(x => x.Roles)
+                    .ThenInclude(x => x.Permissions)
+                .FirstOrDefaultAsync(x => x.Id == id);
 
             if (user == null)
             {
@@ -60,7 +143,7 @@ namespace API.Repositories
             return user;
         }
 
-        public async Task<User> PutUser(string id, UserUpdationRequest request)
+        public async Task<User> PutUser(string id, UserUpdationRequest request, string path)
         {
             var user = await _context.Users.FindAsync(id);
 
@@ -81,6 +164,11 @@ namespace API.Repositories
             }
 
             UserMapper.UpdateUser(user, request);
+                
+            if (!string.IsNullOrWhiteSpace(path))
+            {
+                user.Avatar = path;
+            }
 
             await SaveChangesAsync();
 

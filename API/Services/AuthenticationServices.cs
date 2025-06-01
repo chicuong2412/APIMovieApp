@@ -190,7 +190,7 @@ namespace API.Services
         {
 
             var resetCode = await _passwordResetCodeRepository.GetPasswordResetByTokenAysnc(token);
-            Console.WriteLine(code);
+            
 
             if (resetCode is null)
             {
@@ -228,9 +228,9 @@ namespace API.Services
             {
                 throw new AppException(ErrorCodes.NotFound);
             }
-            Console.WriteLine(resetCode.Code);
+  
             var user = await _userRepository.getById(resetCode.UserId);
-            Console.WriteLine(user);
+            
             if (user is null)
             {
                 throw new AppException(ErrorCodes.ServerError);
@@ -239,7 +239,6 @@ namespace API.Services
             if (resetCode.IsOpenToChange && resetCode.ExpiredChangePasswor is not null
                 && resetCode.ExpiredChangePasswor > DateTime.UtcNow)
             {
-                Console.WriteLine("In");
                 if (!IsPasswordStrongEnough(newPassword))
                 {
                     return new APIresponse<string>(ErrorCodes.DataInvalid);

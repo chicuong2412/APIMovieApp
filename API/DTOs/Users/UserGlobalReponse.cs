@@ -17,5 +17,9 @@
         public String PhoneNumber { get; set; } = string.Empty.ToString();
 
         public string Address { get; set; } = string.Empty.ToString();
+
+        public decimal ScreenTime { get; set; } = 0;
+
+        public string Avatar { get; set; } = "default.jpg";
     }
 }

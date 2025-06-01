@@ -472,7 +472,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "API.DTOs.APIresponse\u00601[[API.DTOs.Movies.MovieGeneralInformationReponse, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "API.DTOs.APIresponse\u00601[[API.DTOs.Movies.MovieDetailInformation, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -927,6 +927,50 @@
           "application/json",
           "text/json"
         ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.UsersController",
+    "Method": "AddMovieFavorite",
+    "RelativePath": "api/users/add-favorite-movie",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.UsersController",
+    "Method": "RemoveFavoriteMovie",
+    "RelativePath": "api/users/remove-favorite-movie",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
         "StatusCode": 200
       }
     ]

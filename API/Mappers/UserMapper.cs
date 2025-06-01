@@ -33,6 +33,8 @@ namespace API.Mappers
                 PhoneNumber = user.PhoneNumber,
                 DoB = user.DoB,
                 Id = user.Id,
+                ScreenTime = user.ScreenTime,
+                Avatar = user.Avatar
             };
         }
 

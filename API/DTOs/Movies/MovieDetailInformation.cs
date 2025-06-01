@@ -2,7 +2,7 @@
 
 namespace API.DTOs.Movies
 {
-    public class MovieGeneralInformationReponse
+    public class MovieDetailInformation
     {
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
@@ -13,7 +13,12 @@ namespace API.DTOs.Movies
         public double VoteAverage { get; set; }
         public decimal VoteCount { get; set; }
         public bool HasSeason { get; set; }
-
+        public int Runtime { get; set; } = 0;
+        public decimal Revenue { get; set; } = 0;
+        public decimal Budget { get; set; } = 0;
+        public bool Status { get; set; } = false;
         public List<Genere> Generes { get; set; } = new List<Genere>();
+        public List<ProductionCompany> ProductionCompanies { get; set; } = new List<ProductionCompany>();
+        public string? path { get; set; }
     }
 }

@@ -56,6 +56,9 @@ namespace API.Repositories
         public async Task<Movie> GetMovieById(int id)
         {
             var movie = await _context.Movies
+                .Include(movie => movie.Generes)
+                .Include(movie => movie.ProductionCompanies)
+                .Include(movie => movie.Countries)
                 .FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == false);
 
             if (movie == null)
@@ -68,6 +71,7 @@ namespace API.Repositories
         public async Task<IEnumerable<Movie>> GetMoviesAsync(ObjectFilter filter)
         {
             var query = _context.Movies
+                .Include(movie => movie.Generes)
                 .Where(x => x.IsDeleted == false)
                 .AsQueryable();
 

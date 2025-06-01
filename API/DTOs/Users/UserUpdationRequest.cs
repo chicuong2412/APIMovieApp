@@ -1,4 +1,6 @@
-﻿namespace API.DTOs.Users
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace API.DTOs.Users
 {
     public class UserUpdationRequest
     {
@@ -8,12 +10,15 @@
 
         public int? Age { get; set; }
 
+        [EmailAddress]
         public string? Email { get; set; }
 
         public DateTime? DoB { get; set; }
 
+        [Phone]
         public String? PhoneNumber { get; set; }
 
         public string? Address { get; set; }
+        public IFormFile? Avatar { get; set; }
     }
 }

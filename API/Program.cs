@@ -29,6 +29,7 @@ builder.Services.AddCors(options =>
 });
 
 // Add services to the container.
+builder.Services.AddScoped<FileServices>();
 builder.Services.AddScoped<IUserRepository ,UserRepository>();
 builder.Services.AddScoped<IUserService ,UserServices>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
@@ -154,6 +155,7 @@ builder.Services.AddAuthorization(
         policy.RequireAuthenticatedUser();
         policy.Requirements.Add(new API.Authorization.Requirements.PermissionRequirements("CAN_GET_INFO"));
     });
+
     options.AddPolicy("Get_Admin", policy =>
     {
         policy.RequireAuthenticatedUser();

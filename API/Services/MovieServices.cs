@@ -32,12 +32,12 @@ namespace API.Services
             await _movieRepository.DeleteMovie(id);
         }
 
-        public async Task<APIresponse<MovieGeneralInformationReponse>> GetMovieGeneralInformationById(int id)
+        public async Task<APIresponse<MovieDetailInformation>> GetMovieDetailInformationById(int id)
         {
             var movie = await _movieRepository.GetMovieById(id);
 
-            var response = new APIresponse<MovieGeneralInformationReponse>(SuccessCodes.Success);
-            response.data = movie.MapToMovieGeneralResponse();
+            var response = new APIresponse<MovieDetailInformation>(SuccessCodes.Success);
+            response.data = movie.MoveToDetail();
             return response;
         }
 

@@ -45,8 +45,6 @@ namespace API.Controllers
         {
             var (filePath, contentType) = _videoServices.GetVideoHLS(code, fileName);
 
-            Console.WriteLine(fileName);
-
             return PhysicalFile(filePath, contentType, enableRangeProcessing: true);
         }
 

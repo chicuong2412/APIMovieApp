@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using API.DTOs;
+using API.DTOs.Movies;
 using API.DTOs.Users;
 using API.Interfaces;
 using API.Mappers;
@@ -12,9 +13,11 @@ namespace API.Services
     public class UserServices : IUserService
     {
         private readonly IUserRepository _userRepository;
-        public UserServices(IUserRepository userRepository)
+        private readonly FileServices _fileServices;
+        public UserServices(IUserRepository userRepository, FileServices fileServices)
         {
             this._userRepository = userRepository;
+            _fileServices = fileServices;
         }
 
         public async Task<APIresponse<UserGlobalReponse>> CreateUser(UserCreationRequest request)
@@ -29,7 +32,12 @@ namespace API.Services
 
         public async Task<APIresponse<UserGlobalReponse>> UpdateUser(string id, UserUpdationRequest request)
         {
-            var user = await _userRepository.PutUser(id, request);
+            string path = null;
+            if (request.Avatar != null)
+            {
+                path = await _fileServices.SaveFileAvatarAsync(request.Avatar);
+            }
+            var user = await _userRepository.PutUser(id, request, path);
             var reponse = new APIresponse<UserGlobalReponse>(SuccessCodes.Success);
             reponse.data = user.ToUserGlobalReponse();
             return reponse;
@@ -60,6 +68,40 @@ namespace API.Services
             var reponse = new APIresponse<String>(SuccessCodes.Success);
             reponse.data = "User has been Deleted";
             return reponse;
+        }
+
+
+        public async Task AddMovieFavorite(string userId, int movieId)
+        {
+            await _userRepository.AddMovieFavorite(userId, movieId);
+        }
+
+        public async Task RemoveMovieFavorite(string userId, int movieId)
+        {
+            await _userRepository.RemoveMovieFavorite(userId, movieId);
+
+        }
+
+        public async Task<APIresponse<bool>> IsMovieFavorite(string userId, int movieId)
+        {
+            var rp = new APIresponse<bool>(SuccessCodes.Success);
+
+            rp.data = await _userRepository.IsMovieFavorite(userId, movieId);
+
+            return rp;
+        }
+
+        public async Task<APIresponse<List<MovieGeneralInformationReponse>>> GetFavoriteMovies(string userId)
+        {
+            var rp = new APIresponse<List<MovieGeneralInformationReponse>>(SuccessCodes.Success);
+
+            rp.data = (await _userRepository.GetFavoriteMovies(userId)).Select(movie => movie.MapToMovieGeneralResponse()).ToList();
+            return rp;
+        }
+
+        public async Task UpdateUserScreenTime(string userId, decimal screenTime)
+        {
+            await _userRepository.UpdateUserScreenTime(userId, screenTime);
         }
     }
 }

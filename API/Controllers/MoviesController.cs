@@ -44,9 +44,9 @@ namespace API.Controllers
 
         [Authorize(policy: "CAN_GET_INFO")]
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<APIresponse<MovieGeneralInformationReponse>>> GetMovie(int id)
+        public async Task<ActionResult<APIresponse<MovieDetailInformation>>> GetMovie(int id)
         {
-            return Ok(await _moveServices.GetMovieGeneralInformationById(id));
+            return Ok(await _moveServices.GetMovieDetailInformationById(id));
         }
 
 

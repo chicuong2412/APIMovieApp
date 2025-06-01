@@ -22,5 +22,18 @@ namespace API.Controllers
             return response;
         }
 
+        [HttpGet("avatar/{path}")]
+        public IActionResult GetAvatar(string path)
+        {
+            var imagePath = Path.Combine("Images", "D:\\Second\\uploads\\" + path);
+            if (!System.IO.File.Exists(imagePath))
+            {
+                imagePath = Path.Combine("Images", "D:\\Second\\images\\default.jpg");
+            }
+            var stream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
+            var response = File(stream, "image/jpeg", enableRangeProcessing: true);
+            return response;
+        }
+
     }
 }

@@ -855,17 +855,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/MovieGeneralInformationReponseAPIresponse"
+                  "$ref": "#/components/schemas/MovieDetailInformationAPIresponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MovieGeneralInformationReponseAPIresponse"
+                  "$ref": "#/components/schemas/MovieDetailInformationAPIresponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MovieGeneralInformationReponseAPIresponse"
+                  "$ref": "#/components/schemas/MovieDetailInformationAPIresponse"
                 }
               }
             }
@@ -1560,6 +1560,50 @@
         }
       }
     },
+    "/api/users/add-favorite-movie": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "movieId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/remove-favorite-movie": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "movieId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/videos/{code}": {
       "get": {
         "tags": [
@@ -1823,13 +1867,6 @@
             "type": "string",
             "nullable": true
           },
-          "movies": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Movie"
-            },
-            "nullable": true
-          },
           "isDeleted": {
             "type": "boolean"
           }
@@ -2025,13 +2062,6 @@
             "type": "string",
             "nullable": true
           },
-          "movies": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Movie"
-            },
-            "nullable": true
-          },
           "isDeleted": {
             "type": "boolean"
           }
@@ -2172,7 +2202,7 @@
         },
         "additionalProperties": false
       },
-      "MovieGeneralInformationReponse": {
+      "MovieDetailInformation": {
         "type": "object",
         "properties": {
           "id": {
@@ -2213,13 +2243,78 @@
           "genres": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/Genere"
+            },
+            "nullable": true
+          },
+          "productionCompanies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductionCompany"
             },
             "nullable": true
           },
           "path": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MovieDetailInformationAPIresponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/MovieDetailInformation"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MovieGeneralInformationReponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "overview": {
+            "type": "string",
+            "nullable": true
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "posterPath": {
+            "type": "string",
+            "nullable": true
+          },
+          "backdropPath": {
+            "type": "string",
+            "nullable": true
+          },
+          "voteAverage": {
+            "type": "number",
+            "format": "double"
+          },
+          "voteCount": {
+            "type": "number",
+            "format": "double"
+          },
+          "hasSeason": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -2346,13 +2441,6 @@
           },
           "name": {
             "type": "string",
-            "nullable": true
-          },
-          "movies": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Movie"
-            },
             "nullable": true
           },
           "isDeleted": {
