@@ -24,10 +24,10 @@ namespace API.Authorization.Handler
             var isExpired = await _expiredJWTRepository.IsTokenExpired(token);
             if (isExpired)
             {
+                
                 context.Fail();
                 return;
             }
-
             if (context.User.HasClaim(c => c.Type == "Permission" && c.Value == requirement.Permission))
             {
                 context.Succeed(requirement);

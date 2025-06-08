@@ -3,24 +3,96 @@
   "WorkspaceRootPath": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\exceptions\\handlers\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:exceptions\\handlers\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\controllers\\authenticatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:controllers\\authenticatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\services\\authenticationservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:services\\authenticationservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\authorization\\handler\\permissionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:authorization\\handler\\permissionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\returncodes\\errorcodes\\errorcodes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:returncodes\\errorcodes\\errorcodes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\controllers\\imagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:controllers\\imagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\models\\episode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:models\\episode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\controllers\\generecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:controllers\\generecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\repositories\\movierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:repositories\\movierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\controllers\\moviescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:controllers\\moviescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\mappers\\moviemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:mappers\\moviemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\dtos\\movies\\moviecreationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:dtos\\movies\\moviecreationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\dtos\\movies\\movieupdationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:dtos\\movies\\movieupdationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\dtos\\movies\\moviegeneralinformationreponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:dtos\\movies\\moviegeneralinformationreponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\dtos\\movies\\moviedetailinformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:dtos\\movies\\moviedetailinformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\services\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:services\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\repositories\\episoderepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:repositories\\episoderepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\dtos\\objectfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:dtos\\objectfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\repositories\\genererepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:repositories\\genererepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\services\\genereservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:services\\genereservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\dtos\\users\\userupdationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:dtos\\users\\userupdationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\admin\\source\\repos\\chicuong2412\\apimovieapp\\api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,16 +106,17 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABEAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAH0AAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-04T17:20:16.841Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -52,51 +125,281 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GlobalExceptionHandler.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Exceptions\\Handlers\\GlobalExceptionHandler.cs",
-              "RelativeDocumentMoniker": "Exceptions\\Handlers\\GlobalExceptionHandler.cs",
-              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Exceptions\\Handlers\\GlobalExceptionHandler.cs",
-              "RelativeToolTip": "Exceptions\\Handlers\\GlobalExceptionHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABKAAAAAAAAAA==",
+              "Title": "AuthenticateController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Controllers\\AuthenticateController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthenticateController.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Controllers\\AuthenticateController.cs",
+              "RelativeToolTip": "Controllers\\AuthenticateController.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAAAH8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T17:31:17.447Z",
+              "WhenOpened": "2025-06-08T12:16:12.224Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ErrorCodes.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\ReturnCodes\\ErrorCodes\\ErrorCodes.cs",
-              "RelativeDocumentMoniker": "ReturnCodes\\ErrorCodes\\ErrorCodes.cs",
-              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\ReturnCodes\\ErrorCodes\\ErrorCodes.cs",
-              "RelativeToolTip": "ReturnCodes\\ErrorCodes\\ErrorCodes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABgAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "MovieCreationRequest.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\DTOs\\Movies\\MovieCreationRequest.cs",
+              "RelativeDocumentMoniker": "DTOs\\Movies\\MovieCreationRequest.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\DTOs\\Movies\\MovieCreationRequest.cs",
+              "RelativeToolTip": "DTOs\\Movies\\MovieCreationRequest.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAzwBEAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T17:26:23.62Z"
+              "WhenOpened": "2025-06-08T12:08:02.133Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PermissionHandler.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Authorization\\Handler\\PermissionHandler.cs",
-              "RelativeDocumentMoniker": "Authorization\\Handler\\PermissionHandler.cs",
-              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Authorization\\Handler\\PermissionHandler.cs",
-              "RelativeToolTip": "Authorization\\Handler\\PermissionHandler.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAABkAAAANAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "MovieUpdationRequest.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\DTOs\\Movies\\MovieUpdationRequest.cs",
+              "RelativeDocumentMoniker": "DTOs\\Movies\\MovieUpdationRequest.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\DTOs\\Movies\\MovieUpdationRequest.cs",
+              "RelativeToolTip": "DTOs\\Movies\\MovieUpdationRequest.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwBAAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T17:25:36.25Z"
+              "WhenOpened": "2025-06-08T12:07:42.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MovieGeneralInformationReponse.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\DTOs\\Movies\\MovieGeneralInformationReponse.cs",
+              "RelativeDocumentMoniker": "DTOs\\Movies\\MovieGeneralInformationReponse.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\DTOs\\Movies\\MovieGeneralInformationReponse.cs",
+              "RelativeToolTip": "DTOs\\Movies\\MovieGeneralInformationReponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T12:07:37.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "MovieDetailInformation.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\DTOs\\Movies\\MovieDetailInformation.cs",
+              "RelativeDocumentMoniker": "DTOs\\Movies\\MovieDetailInformation.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\DTOs\\Movies\\MovieDetailInformation.cs",
+              "RelativeToolTip": "DTOs\\Movies\\MovieDetailInformation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T12:07:32.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Movie.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Models\\Movie.cs",
+              "RelativeDocumentMoniker": "Models\\Movie.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Models\\Movie.cs",
+              "RelativeToolTip": "Models\\Movie.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA1wBUAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T12:06:28.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MovieMapper.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Mappers\\MovieMapper.cs",
+              "RelativeDocumentMoniker": "Mappers\\MovieMapper.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Mappers\\MovieMapper.cs",
+              "RelativeToolTip": "Mappers\\MovieMapper.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwDAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T07:11:28.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MovieRepository.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Repositories\\MovieRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\MovieRepository.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Repositories\\MovieRepository.cs",
+              "RelativeToolTip": "Repositories\\MovieRepository.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAkwIkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T02:51:51.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ObjectFilter.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\DTOs\\ObjectFilter.cs",
+              "RelativeDocumentMoniker": "DTOs\\ObjectFilter.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\DTOs\\ObjectFilter.cs",
+              "RelativeToolTip": "DTOs\\ObjectFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T02:50:57.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GenereController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Controllers\\GenereController.cs",
+              "RelativeDocumentMoniker": "Controllers\\GenereController.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Controllers\\GenereController.cs",
+              "RelativeToolTip": "Controllers\\GenereController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T01:53:47.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "GenereServices.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Services\\GenereServices.cs",
+              "RelativeDocumentMoniker": "Services\\GenereServices.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Services\\GenereServices.cs",
+              "RelativeToolTip": "Services\\GenereServices.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAwBQAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T01:49:15.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "GenereRepository.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Repositories\\GenereRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\GenereRepository.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Repositories\\GenereRepository.cs",
+              "RelativeToolTip": "Repositories\\GenereRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T01:45:17.531Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "EpisodeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Repositories\\EpisodeRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\EpisodeRepository.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Repositories\\EpisodeRepository.cs",
+              "RelativeToolTip": "Repositories\\EpisodeRepository.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAkwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T17:32:05.615Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Episode.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Models\\Episode.cs",
-              "RelativeDocumentMoniker": "Models\\Episode.cs",
-              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Models\\Episode.cs",
-              "RelativeToolTip": "Models\\Episode.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA8AAAAAAAAAA==",
+              "Title": "ImagesController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Controllers\\ImagesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ImagesController.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Controllers\\ImagesController.cs",
+              "RelativeToolTip": "Controllers\\ImagesController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBkAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T17:06:27.356Z"
+              "WhenOpened": "2025-06-01T06:40:19.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UserUpdationRequest.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\DTOs\\Users\\UserUpdationRequest.cs",
+              "RelativeDocumentMoniker": "DTOs\\Users\\UserUpdationRequest.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\DTOs\\Users\\UserUpdationRequest.cs",
+              "RelativeToolTip": "DTOs\\Users\\UserUpdationRequest.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T06:11:42.462Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthenticationServices.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Services\\AuthenticationServices.cs",
+              "RelativeDocumentMoniker": "Services\\AuthenticationServices.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Services\\AuthenticationServices.cs",
+              "RelativeToolTip": "Services\\AuthenticationServices.cs",
+              "ViewState": "AgIAAA0BAAAAAAAAAAAawB8BAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T12:05:55.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "Interfaces\\IUserRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA8wA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T11:48:36.421Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AgIAALEAAAAAAAAAAAAiwLwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T03:35:50.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Interfaces\\IUserService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IUserService.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Interfaces\\IUserService.cs",
+              "RelativeToolTip": "Interfaces\\IUserService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABsAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T03:35:37.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UserServices.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Services\\UserServices.cs",
+              "RelativeDocumentMoniker": "Services\\UserServices.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Services\\UserServices.cs",
+              "RelativeToolTip": "Services\\UserServices.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwDIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T03:27:15.938Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAYwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T04:19:52.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MoviesController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Controllers\\MoviesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MoviesController.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\chicuong2412\\APIMovieApp\\API\\Controllers\\MoviesController.cs",
+              "RelativeToolTip": "Controllers\\MoviesController.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAswFYAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T02:38:20.791Z",
+              "EditorCaption": ""
             }
           ]
         }

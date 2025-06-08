@@ -16,6 +16,7 @@ namespace API.DTOs.Movies
         public decimal Budget { get; set; } = 0;
         public decimal VoteCount { get; set; } = 0;
         public string Path { get; set; } = string.Empty;
+        public decimal VoteAverage { get; set; } = 0;
 
         //public List<string> Genres { get; set; }
     }

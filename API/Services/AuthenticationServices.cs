@@ -68,7 +68,7 @@ namespace API.Services
             var tokenExpiry = DateTime.UtcNow.AddMinutes(tokenValidityMins);
             var calims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.NameIdentifier, user.Id), // ID
                 new Claim(ClaimTypes.Email, user.Email!),
                 new Claim("expDate", tokenExpiry.ToString()),
             };
@@ -171,40 +171,35 @@ namespace API.Services
 
             if (preCode is not null && Math.Abs(preCode.ExpiredDate.Subtract(DateTime.UtcNow.AddMinutes(5)).TotalMinutes) <= 2)
             {
-                reponse = new APIresponse<string>(ErrorCodes.RequestSpam);
-                reponse.message = "Please wait 1 minutes to get the code!!!";
-
-                return reponse;
+                throw new AppException(ErrorCodes.RequestSpam);
             }
 
             var passwordResetCode = await _passwordResetCodeRepository.Create(user);
+
 
             await SendEmailPassCode(passwordResetCode, email);
 
             reponse.message = "Please check email (spam folder) to get the code!!!";
 
+            reponse.data = passwordResetCode.Token;
+
             return reponse;
         }
 
-        public async Task<APIresponse<string>> ValidateResetCode(string email, string code)
+        public async Task<APIresponse<string>> ValidateResetCode(string token, string code)
         {
-            var user = await _userRepository.getByEmail(email);
 
-            if (user is null)
+            var resetCode = await _passwordResetCodeRepository.GetPasswordResetByTokenAysnc(token);
+
+
+            if (resetCode is null)
             {
                 throw new AppException(ErrorCodes.NotFound);
             }
 
-            var resetCode = await _passwordResetCodeRepository.GetPasswordResetAsync(user.Id);
-
-            if (resetCode is null)
-            {
-                return new APIresponse<string>(ErrorCodes.DataInvalid);
-            }
-
             if (resetCode.ExpiredDate < DateTime.UtcNow)
             {
-                return new APIresponse<string>(ErrorCodes.Expired);
+                throw new AppException(ErrorCodes.Expired);
             }
 
             if (resetCode.Code != code)
@@ -214,7 +209,7 @@ namespace API.Services
 
             resetCode.IsOpenToChange = true;
             resetCode.ExpiredChangePasswor = DateTime.UtcNow.AddMinutes(15);
-            resetCode.Token = Guid.NewGuid().ToString();
+
 
             await _passwordResetCodeRepository.SaveChangesAsync();
 
@@ -224,27 +219,31 @@ namespace API.Services
             };
         }
 
-        public async Task<APIresponse<string>> ChangePassword(string email, string newPassword, string token)
+        public async Task<APIresponse<string>> ChangePassword(string newPassword, string token)
         {
-            var user = await _userRepository.getByEmail(email);
 
-            if (user is null) { throw new AppException(ErrorCodes.NotFound);}
-
-            var resetCode = await _passwordResetCodeRepository.GetPasswordResetAsync(user.Id);
+            var resetCode = await _passwordResetCodeRepository.GetPasswordResetByTokenAysnc(token);
 
             if (resetCode is null)
             {
                 throw new AppException(ErrorCodes.NotFound);
             }
 
-            if (resetCode.IsOpenToChange && resetCode.ExpiredChangePasswor is not null 
-                && resetCode.ExpiredChangePasswor > DateTime.UtcNow && token == resetCode.Token)
+            var user = await _userRepository.getById(resetCode.UserId);
+
+            if (user is null)
+            {
+                throw new AppException(ErrorCodes.ServerError);
+            }
+
+            if (resetCode.IsOpenToChange && resetCode.ExpiredChangePasswor is not null
+                && resetCode.ExpiredChangePasswor > DateTime.UtcNow)
             {
                 if (!IsPasswordStrongEnough(newPassword))
                 {
                     return new APIresponse<string>(ErrorCodes.DataInvalid);
                 }
-                
+
                 var passwordHasher = new PasswordHasher<User>();
 
                 var hashed = passwordHasher.HashPassword(null, newPassword);
@@ -255,7 +254,8 @@ namespace API.Services
 
 
                 await _passwordResetCodeRepository.SaveChangesAsync();
-            } else
+            }
+            else
             {
                 return new APIresponse<string>(ErrorCodes.NotFound)
                 {
@@ -263,11 +263,29 @@ namespace API.Services
                 };
             }
 
-                return new APIresponse<string>(SuccessCodes.Success)
-                {
-                    data = "Change Password Successfully!!!"
-                };
+            return new APIresponse<string>(SuccessCodes.Success)
+            {
+                data = "Change Password Successfully!!!"
+            };
 
+        }
+
+        public async Task ChangePasswordLogged(string newPassword, string userId)
+        {
+            var user = await _userRepository.getById(userId);
+
+            if (user is null)
+            {
+                throw new AppException(ErrorCodes.NotFound);
+            }
+
+            var passwordHasher = new PasswordHasher<User>();
+
+            var hashed = passwordHasher.HashPassword(null, newPassword);
+
+            user.PasswordHash = hashed;
+
+            await _passwordResetCodeRepository.SaveChangesAsync();
         }
 
         private async Task SendEmailPassCode(PasswordResetCode psc, string email)

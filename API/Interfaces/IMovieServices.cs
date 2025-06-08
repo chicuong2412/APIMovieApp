@@ -10,7 +10,7 @@ namespace API.Interfaces
         Task<APIresponse<MovieGeneralInformationReponse>> UpdateMovie(int id, MovieUpdationRequest request);
         Task DeleteMovie(int id);
         Task<APIresponse<IEnumerable<MovieGeneralInformationReponse>>> GetMoviesAsync(ObjectFilter filter);
-        Task<APIresponse<MovieGeneralInformationReponse>> GetMovieGeneralInformationById(int id);
+        Task<APIresponse<MovieDetailInformation>> GetMovieDetailInformationById(int id);
         Task<APIresponse<List<MovieGeneralInformationReponse>>> GetTop20ReleasedMovies();
 
         Task<APIresponse<IEnumerable<MovieGeneralInformationReponse>>> Get9RandomMovies();

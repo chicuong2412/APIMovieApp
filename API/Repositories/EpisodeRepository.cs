@@ -99,8 +99,8 @@ namespace API.Repositories
 
             var episodes = await _context.Episodes
                 .Where(e => e.SeasonId == seasonId && e.IsDeleted == false)
-                .Skip((objectFilter.Page - 1) * objectFilter.PageSize)
-                .Take(objectFilter.PageSize)
+                //.Skip((objectFilter.Page - 1) * objectFilter.PageSize)
+                //.Take(objectFilter.PageSize)
                 .ToListAsync();
 
             if (episodes == null)

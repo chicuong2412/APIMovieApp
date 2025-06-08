@@ -28,7 +28,6 @@ namespace API.Controllers
             _moveServices = movieServices;
         }
 
-        // GET: api/Movies/search
         [Authorize(policy: "CAN_GET_INFO")]
         [HttpGet("search")]
         public async Task<ActionResult<APIresponse<IEnumerable<MovieGeneralInformationReponse>>>> GetMovies([FromQuery] ObjectFilter objectFilter)
@@ -43,12 +42,11 @@ namespace API.Controllers
             return Ok(await _moveServices.Get9RandomMovies());
         }
 
-        // GET: api/Movies/5
         [Authorize(policy: "CAN_GET_INFO")]
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<APIresponse<MovieGeneralInformationReponse>>> GetMovie(int id)
+        public async Task<ActionResult<APIresponse<MovieDetailInformation>>> GetMovie(int id)
         {
-            return Ok(await _moveServices.GetMovieGeneralInformationById(id));
+            return Ok(await _moveServices.GetMovieDetailInformationById(id));
         }
 
 
@@ -89,7 +87,6 @@ namespace API.Controllers
             return Ok(await _moveServices.GetTop20ReleasedMovies());
         }
 
-        // DELETE: api/Movies/5
         [Authorize(policy: "Delete")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteMovie(int id)

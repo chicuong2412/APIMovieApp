@@ -13,5 +13,8 @@
         public decimal? Budget { get; set; }
         public decimal? VoteCount { get; set; }
         public string? Path { get; set; }
+
+        public decimal? VoteAverage { get; set; }
+
     }
 }

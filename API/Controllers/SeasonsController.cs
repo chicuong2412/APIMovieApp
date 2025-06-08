@@ -28,7 +28,7 @@ namespace API.Controllers
 
         // GET: api/Seasons
         [Authorize(policy: "CAN_GET_INFO")]
-        [HttpGet("/movie/{id:int}")]
+        [HttpGet("getSeasonsByMoiveId/{id:int}")]
         public async Task<ActionResult<APIresponse<List<SeasonGeneralInformation>>>> GetSeasonsByMoiveId(int id)
         {
             return Ok(await _seasonServices.GetSeasonsByMovieId(id));

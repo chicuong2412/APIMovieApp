@@ -27,18 +27,27 @@ namespace API.Controllers
         }
 
         // GET: api/Videos/5
-        [Authorize(policy: "View")]
+        //[Authorize(policy: "View")]
+        [AllowAnonymous]
         [HttpGet("{code}")]
         public async Task<IActionResult> GetVideo(string code)
         {
             var reponse = await _videoServices.GetVideoStream(code);
 
+            Console.WriteLine("Done stream");
+
             return Ok(reponse);
         }
 
+        [AllowAnonymous]
+        [HttpGet("{code}/{fileName}")]
+        public async Task<IActionResult> GetVideoHLS([FromRoute] String code, [FromRoute] String fileName)
+        {
+            var (filePath, contentType) = _videoServices.GetVideoHLS(code, fileName);
 
-        // PUT: api/Videos/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+            return PhysicalFile(filePath, contentType, enableRangeProcessing: true);
+        }
+
         [Authorize(policy: "Update")]
         [HttpPut("{id:int}")]
         public async Task<ActionResult<APIresponse<Video>>> PutVideo(int id, VideoUpdationRequest request)

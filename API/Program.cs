@@ -29,6 +29,7 @@ builder.Services.AddCors(options =>
 });
 
 // Add services to the container.
+builder.Services.AddScoped<FileServices>();
 builder.Services.AddScoped<IUserRepository ,UserRepository>();
 builder.Services.AddScoped<IUserService ,UserServices>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
@@ -39,6 +40,8 @@ builder.Services.AddScoped<IEpisodeRepository, EpisodeRepository>();
 builder.Services.AddScoped<IEpisodeServices, EpisodeServices>();
 builder.Services.AddScoped<IVideoRepository, VideoRepository>();
 builder.Services.AddScoped<IVideoServices, VideoServices>();
+builder.Services.AddScoped<GenereRepository>();
+builder.Services.AddScoped<GenereServices>();
 builder.Services.AddScoped<AuthenticationServices>();
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<ExpiredJWTRepository>();
@@ -154,6 +157,7 @@ builder.Services.AddAuthorization(
         policy.RequireAuthenticatedUser();
         policy.Requirements.Add(new API.Authorization.Requirements.PermissionRequirements("CAN_GET_INFO"));
     });
+
     options.AddPolicy("Get_Admin", policy =>
     {
         policy.RequireAuthenticatedUser();
