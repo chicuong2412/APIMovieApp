@@ -78,6 +78,13 @@ namespace API.Repositories
             if (!string.IsNullOrWhiteSpace(filter.Search))
             {
                 query = query.Where(x => x.Title.Contains(filter.Search));
+
+                
+            }
+            if (filter.genere.HasValue)
+            {
+                Console.WriteLine("Genere Value: " + filter.genere.HasValue);
+                query = query.Where(x => x.Generes.Any(genere => genere.Id == filter.genere.Value));
             }
 
             if (filter.PageSize > 0)

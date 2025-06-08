@@ -58,6 +58,7 @@ namespace API.Mappers
                 VoteCount = movie.VoteCount,
                 HasSeason = movie.HasSeason,
                 Generes = movie.Generes,
+                VoteAverage = movie.VoteAverage,
             };
         }
 
@@ -85,6 +86,8 @@ namespace API.Mappers
             if (request.Status.HasValue) { movie.Status = request.Status.Value; }
 
             if (request.HasSeason.HasValue) { movie.HasSeason = request.HasSeason.Value; }
+
+            if (request.VoteAverage.HasValue) { movie.VoteAverage = request.VoteAverage.Value; }
 
             return movie;
         }

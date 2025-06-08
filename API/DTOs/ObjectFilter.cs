@@ -11,5 +11,7 @@
 
         public bool IsAscending { get; set; } = true;
 
+        public int? genere { get; set; }
+
     }
 }

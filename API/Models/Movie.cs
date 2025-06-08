@@ -18,6 +18,9 @@ namespace API.Models
         public decimal Budget { get; set; } = 0;
         public int Runtime { get; set; } = 0;
         public decimal VoteCount { get; set; } = 0;
+
+        public decimal VoteAverage { get; set; } = 0;
+
         public List<Genere> Generes { get; set; } = new List<Genere>();
         public List<Country> Countries { get; set; } = new List<Country>();
         public List<ProductionCompany> ProductionCompanies { get; set; } = new List<ProductionCompany>();

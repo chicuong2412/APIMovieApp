@@ -10,7 +10,7 @@ namespace API.DTOs.Movies
         public DateTime ReleaseDate { get; set; }
         public string PosterPath { get; set; } = string.Empty;
         public string BackdropPath { get; set; } = string.Empty;
-        public double VoteAverage { get; set; }
+        public decimal VoteAverage { get; set; }
         public decimal VoteCount { get; set; }
         public bool HasSeason { get; set; }
 

@@ -1,6 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 using API.DTOs;
 using API.DTOs.Authentication;
+using API.ENUMS.ErrorCodes;
+using API.ReturnCodes.SuccessCodes;
 using API.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -60,7 +63,7 @@ namespace API.Controllers
         [AllowAnonymous]
         [HttpPost("refresh-token")]
         public async Task<ActionResult<AuthenticationResponse>> RefreshToken([FromBody] RefreshTokenRequest refreshToken)
-        {   
+        {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Input the refresh token, please");
@@ -105,6 +108,30 @@ namespace API.Controllers
                 return BadRequest();
             }
             return Ok(await _authenticationServices.ChangePassword(changePassRequest.NewPassword, changePassRequest.Token));
+        }
+
+
+        [Authorize(policy: "CAN_GET_INFO")]
+        [HttpPut("put-password")]
+        public async Task<ActionResult<APIresponse<string>>> ChangePasswordLogged([FromBody] ChangePassLogged rq)
+        {
+            var identity = User.Claims;
+            if (identity == null)
+            {
+                throw new UnauthorizedAccessException("User is not authenticated");
+            }
+            var userId = identity.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+            {
+                return BadRequest(new APIresponse<string>(ErrorCodes.DataInvalid) { data = "User ID is missing" });
+            }
+
+            await _authenticationServices.ChangePasswordLogged(rq.Password, userId);
+
+            return Ok(new APIresponse<string>(SuccessCodes.Success)
+            {
+                data = "Changed password successfully",
+            });
         }
 
 

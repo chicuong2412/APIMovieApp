@@ -40,6 +40,8 @@ builder.Services.AddScoped<IEpisodeRepository, EpisodeRepository>();
 builder.Services.AddScoped<IEpisodeServices, EpisodeServices>();
 builder.Services.AddScoped<IVideoRepository, VideoRepository>();
 builder.Services.AddScoped<IVideoServices, VideoServices>();
+builder.Services.AddScoped<GenereRepository>();
+builder.Services.AddScoped<GenereServices>();
 builder.Services.AddScoped<AuthenticationServices>();
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<ExpiredJWTRepository>();

@@ -68,7 +68,7 @@ namespace API.Services
             var tokenExpiry = DateTime.UtcNow.AddMinutes(tokenValidityMins);
             var calims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.NameIdentifier, user.Id), // ID
                 new Claim(ClaimTypes.Email, user.Email!),
                 new Claim("expDate", tokenExpiry.ToString()),
             };
@@ -190,7 +190,7 @@ namespace API.Services
         {
 
             var resetCode = await _passwordResetCodeRepository.GetPasswordResetByTokenAysnc(token);
-            
+
 
             if (resetCode is null)
             {
@@ -228,9 +228,9 @@ namespace API.Services
             {
                 throw new AppException(ErrorCodes.NotFound);
             }
-  
+
             var user = await _userRepository.getById(resetCode.UserId);
-            
+
             if (user is null)
             {
                 throw new AppException(ErrorCodes.ServerError);
@@ -268,6 +268,24 @@ namespace API.Services
                 data = "Change Password Successfully!!!"
             };
 
+        }
+
+        public async Task ChangePasswordLogged(string newPassword, string userId)
+        {
+            var user = await _userRepository.getById(userId);
+
+            if (user is null)
+            {
+                throw new AppException(ErrorCodes.NotFound);
+            }
+
+            var passwordHasher = new PasswordHasher<User>();
+
+            var hashed = passwordHasher.HashPassword(null, newPassword);
+
+            user.PasswordHash = hashed;
+
+            await _passwordResetCodeRepository.SaveChangesAsync();
         }
 
         private async Task SendEmailPassCode(PasswordResetCode psc, string email)

@@ -325,6 +325,54 @@
         }
       }
     },
+    "/api/authenticate/put-password": {
+      "put": {
+        "tags": [
+          "Authenticate"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePassLogged"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePassLogged"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePassLogged"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringAPIresponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringAPIresponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringAPIresponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/auth/register": {
       "post": {
         "tags": [
@@ -406,6 +454,14 @@
             "in": "query",
             "schema": {
               "type": "boolean"
+            }
+          },
+          {
+            "name": "genere",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -714,7 +770,58 @@
         }
       }
     },
+    "/api/generes/getAll": {
+      "get": {
+        "tags": [
+          "Genere"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenereListAPIresponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenereListAPIresponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenereListAPIresponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/images/{path}": {
+      "get": {
+        "tags": [
+          "Images"
+        ],
+        "parameters": [
+          {
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/images/avatar/{path}": {
       "get": {
         "tags": [
           "Images"
@@ -777,6 +884,14 @@
             "in": "query",
             "schema": {
               "type": "boolean"
+            }
+          },
+          {
+            "name": "genere",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -1482,19 +1597,66 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/UserUpdationRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserUpdationRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserUpdationRequest"
+                "type": "object",
+                "properties": {
+                  "Username": {
+                    "type": "string"
+                  },
+                  "Name": {
+                    "type": "string"
+                  },
+                  "Age": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "DoB": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "PhoneNumber": {
+                    "type": "string",
+                    "format": "tel"
+                  },
+                  "Address": {
+                    "type": "string"
+                  },
+                  "Avatar": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Username": {
+                  "style": "form"
+                },
+                "Name": {
+                  "style": "form"
+                },
+                "Age": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "DoB": {
+                  "style": "form"
+                },
+                "PhoneNumber": {
+                  "style": "form"
+                },
+                "Address": {
+                  "style": "form"
+                },
+                "Avatar": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -1560,7 +1722,7 @@
         }
       }
     },
-    "/api/users/add-favorite-movie": {
+    "/api/users/add-favorite-movie/{movieId}": {
       "post": {
         "tags": [
           "Users"
@@ -1568,7 +1730,8 @@
         "parameters": [
           {
             "name": "movieId",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1582,7 +1745,7 @@
         }
       }
     },
-    "/api/users/remove-favorite-movie": {
+    "/api/users/remove-favorite-movie/{movieId}": {
       "post": {
         "tags": [
           "Users"
@@ -1590,7 +1753,8 @@
         "parameters": [
           {
             "name": "movieId",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1600,6 +1764,230 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/checkFavorite/{movieId}": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "movieId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanAPIresponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanAPIresponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanAPIresponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/get-favorite-movies": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieGeneralInformationReponseListAPIresponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieGeneralInformationReponseListAPIresponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieGeneralInformationReponseListAPIresponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/update-screen-time": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScreenTime"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScreenTime"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScreenTime"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/update-my-profile": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Username": {
+                    "type": "string"
+                  },
+                  "Name": {
+                    "type": "string"
+                  },
+                  "Age": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "DoB": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "PhoneNumber": {
+                    "type": "string",
+                    "format": "tel"
+                  },
+                  "Address": {
+                    "type": "string"
+                  },
+                  "Avatar": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Username": {
+                  "style": "form"
+                },
+                "Name": {
+                  "style": "form"
+                },
+                "Age": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "DoB": {
+                  "style": "form"
+                },
+                "PhoneNumber": {
+                  "style": "form"
+                },
+                "Address": {
+                  "style": "form"
+                },
+                "Avatar": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringAPIresponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringAPIresponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringAPIresponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/get-my-profile": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserGlobalReponseAPIresponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserGlobalReponseAPIresponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserGlobalReponseAPIresponse"
+                }
+              }
+            }
           }
         }
       }
@@ -1823,6 +2211,33 @@
           "tokenExpiry": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BooleanAPIresponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChangePassLogged": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -2068,6 +2483,27 @@
         },
         "additionalProperties": false
       },
+      "GenereListAPIresponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Genere"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Movie": {
         "type": "object",
         "properties": {
@@ -2109,7 +2545,15 @@
             "type": "number",
             "format": "double"
           },
+          "runtime": {
+            "type": "integer",
+            "format": "int32"
+          },
           "voteCount": {
+            "type": "number",
+            "format": "double"
+          },
+          "voteAverage": {
             "type": "number",
             "format": "double"
           },
@@ -2198,6 +2642,10 @@
           "path": {
             "type": "string",
             "nullable": true
+          },
+          "voteAverage": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false
@@ -2240,7 +2688,22 @@
           "hasSeason": {
             "type": "boolean"
           },
-          "genres": {
+          "runtime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "revenue": {
+            "type": "number",
+            "format": "double"
+          },
+          "budget": {
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "generes": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Genere"
@@ -2315,6 +2778,13 @@
           },
           "hasSeason": {
             "type": "boolean"
+          },
+          "generes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Genere"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2337,6 +2807,27 @@
         "additionalProperties": false
       },
       "MovieGeneralInformationReponseIEnumerableAPIresponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MovieGeneralInformationReponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MovieGeneralInformationReponseListAPIresponse": {
         "type": "object",
         "properties": {
           "code": {
@@ -2428,6 +2919,11 @@
           "path": {
             "type": "string",
             "nullable": true
+          },
+          "voteAverage": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2477,6 +2973,19 @@
           "password": {
             "minLength": 1,
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ScreenTime": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false
@@ -2735,6 +3244,14 @@
           "address": {
             "type": "string",
             "nullable": true
+          },
+          "screenTime": {
+            "type": "number",
+            "format": "double"
+          },
+          "avatar": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2752,42 +3269,6 @@
           },
           "data": {
             "$ref": "#/components/schemas/UserGlobalReponse"
-          }
-        },
-        "additionalProperties": false
-      },
-      "UserUpdationRequest": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "age": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "doB": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "phoneNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "address": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false
